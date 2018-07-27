@@ -25,7 +25,7 @@ def message():
         "message": {
             "text": content
         }
-    } t
+    } 
 
     response = json.dumps(response, ensure_ascii=False)
     return response

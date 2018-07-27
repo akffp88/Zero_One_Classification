@@ -10,6 +10,7 @@ from flask import request
 from flask import jsonify
 from flask import json
 import myProcessing
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -35,14 +36,23 @@ def message():
 
         if content == "Label 0":
                 result = myProcessing._get_response_(0)
+                raw_data = "[1, 1, 1, 1, 0, 1, 1, 1, 1]"
         else :
                 result = myProcessing._get_response_(1)
+                raw_data = "[0, 1, 0, 0, 1, 0, 0, 1, 0]"
 
-        print(result)
+        result = pd.Series(result).to_json(orient='values')
+
+        text = raw_data + "\n" + result
         
         response ={
                 "message" :{
-                        "text" : result
+                        "text" : text
+                },
+
+                "keyboard" : {
+                        'type' : 'buttons',
+                        'buttons' : ['Label 0', 'Label 1']
                 }
         }
 

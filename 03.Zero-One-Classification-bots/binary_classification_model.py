@@ -64,6 +64,6 @@ class binary_classifier :
         return self.sess.run([self.cost, self.accuracy], feed_dict={self.X: pixel_input, self.Y: label_input})
     
     def _prediction_(self,pixel_input,label_input): #학습된 모델을 이용하여 예측하기
-        test_predict = self.sess.run([self.accuracy,self.prediction,self.correct_prediction], feed_dict={self.X: pixel_input, self.Y: label_input})
+        test_predict = self.sess.run(self.prediction, feed_dict={self.X: pixel_input, self.Y: label_input})
 
         return test_predict
