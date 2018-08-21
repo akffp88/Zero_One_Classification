@@ -9,6 +9,8 @@ import tensorflow as tf
 
 import numpy as np
 
+import os
+
 from binary_classification_model import binary_classifier
 #binary_classification_model.py에서 생성한 binary_classifier 클래스를 추가
 
