@@ -20,4 +20,10 @@ saver.restore(sess,tf.train.latest_checkpoint('./models/')) #1501번 학습한 �
 
 prediction_result = model._prediction_(test_pixel,test_label) #불러온 모델을 이용하여 테스트 데이터를 사용하여 예측하기
 
-print(prediction_result) #예측한 결과 출력하기
+sub = pd.DataFrame()
+
+sub['Prediction_Label'] = prediction_result[1]
+sub['Origin_Label'] = test_label
+sub['Corret'] = prediction_result[2]
+
+print(sub) #예측한 결과 출력하기
